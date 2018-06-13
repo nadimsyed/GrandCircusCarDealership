@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<form action="~/Home/GetByCarMake" method="get">
+    <br />
+
+    <fieldset class="form-group">
+       Car Make: <input type="text" name="make" /><br />
+
+    </fieldset>
+    <input id="submit" type="submit" value="Car Search" class="btn" /><br />
+
+</form>
+
+<form action="~/Home/GetByCarModel" method="get">
+    <br />
+
+    <fieldset class="form-group">
+        Car Model: <input type="text" name="model" /><br />
+
+    </fieldset>
+    <input id="submit" type="submit" value="Car Search" class="btn" /><br />
+
+</form>
+
+<form action="~/Home/GetByCarYear" method="get">
+    <br />
+
+    <fieldset class="form-group">
+        Car Year: <input type="number" name="year" /><br />
+
+    </fieldset>
+    <input id="submit" type="submit" value="Car Search" class="btn" /><br />
+
+</form>
+
+<form action="~/Home/GetByCarColor" method="get">
+    <br />
+
+    <fieldset class="form-group">
+        Car Color: <input type="text" name="color" /><br />
+
+    </fieldset>
+    <input id="submit" type="submit" value="Car Search" class="btn" /><br />
+
+</form>
+<a href="~/Home/GetEverythingStart">Wanna do a Search with Fields Combined?</a>

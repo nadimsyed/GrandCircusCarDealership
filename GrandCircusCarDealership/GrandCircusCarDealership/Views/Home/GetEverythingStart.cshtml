@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "GetEverythingStart";
+}
+
+<h2>GetEverythingStart</h2>
+
+<form action="~/Home/GetByCarEverything" method="get">
+    <br />
+
+    <fieldset class="form-group">
+        Car Make: <input type="text" name="make" /><br />
+
+    </fieldset>
+
+
+    <br />
+
+    <fieldset class="form-group">
+        Car Model: <input type="text" name="model" /><br />
+
+    </fieldset>
+
+
+    <br />
+
+    <fieldset class="form-group">
+        Car Year: <input type="number" name="year" /><br />
+
+    </fieldset>
+
+
+    <br />
+
+    <fieldset class="form-group">
+        Car Color: <input type="text" name="color" /><br />
+
+    </fieldset>
+    <input id="submit" type="submit" value="Car Search" class="btn" /><br />
+
+</form>
