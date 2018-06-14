@@ -212,6 +212,7 @@ namespace GrandCircusCarDealership.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult GetByCarEverything(string make = "boo", string model = "boo", int year = 0, string color = "boo")
         {
             HttpWebRequest WR = WebRequest.CreateHttp($"http://localhost:52043/api/Cars/GetCarByEverything?make={make}&model={model}&year={year}&color={color}");

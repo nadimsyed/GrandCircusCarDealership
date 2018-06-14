@@ -39,3 +39,87 @@
     <input id="submit" type="submit" value="Car Search" class="btn" /><br />
 
 </form>
+
+
+
+<form @*action="~/Home/GetByCarEverything"*@ method="get">
+    <br />
+
+    <fieldset class="form-group">
+        Car Make: <input id="bob" type="text" name="make" oninput="searchEverything()"/><br />
+
+    </fieldset>
+
+
+    <br />
+
+    <fieldset class="form-group">
+        Car Model: <input id="bob2" type="text" name="model" oninput="searchEverything()" /><br />
+
+    </fieldset>
+
+
+    <br />
+
+    <fieldset class="form-group">
+        Car Year: <input id="bob3" type="number" name="year" oninput="searchEverything()" /><br />
+
+    </fieldset>
+
+
+    <br />
+
+    <fieldset class="form-group">
+        Car Color: <input id="bob4" type="text" name="color" oninput="searchEverything()" /><br />
+
+    </fieldset>
+    @*<input id="submit" type="submit" value="Car Search" class="btn" /><br />*@
+
+</form>
+<table class="table table-striped" id="cars">
+    <!-- this is the inner HTML for #customers -->
+</table>
+<script type="text/javascript"
+        src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    function searchEverything() {
+        $.ajax(
+            {
+                type: 'GET',
+                url: 'http://localhost:52043/api/Cars/GetCarByEverything?make=' + document.getElementById("bob").value
+                    + '&model=' + document.getElementById("bob2").value +
+                    '&year=' + document.getElementById("bob3").value + '&color=' + document.getElementById("bob4").value,
+                //data: '{author: "' + document.getElementById("bob").value
+                //    + '"}',
+                contentType: 'application/json; charset-utf-8',
+                dataType: 'json',
+                success:
+                    function (response) {
+                        var tableHTML = "<tr><th>Make</th>"
+                            + "<th>Model</th>"
+                            + "<th>Year</th>"
+                            + "<th>Color</th></tr>";
+
+                        for (var i = 0; i < response.length; i++) {
+                            var Car = response[i];
+                            var tr = "<tr><td>" + Car.Make + "</td>"
+                                + "<td>" + Car.Model + "</td>"
+                                + "<td>" + Car.Year + "</td>"
+                                + "<td>" + Car.Color + "</td>"
+                                + "</tr>";
+                            tableHTML += tr;
+                        }
+                        document.getElementById("cars")
+                            .innerHTML = tableHTML;
+                    },
+                failure: function (response) {
+                    alert("Failure" + response.responseText);
+                },
+                error: function (response) {
+                    alert("Error" + response.responseText);
+                }
+            }
+
+        );
+    }
+</script>

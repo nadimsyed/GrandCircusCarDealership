@@ -36,6 +36,7 @@ namespace GrandCircusCarDealership.Controllers
         }
 
         [ResponseType(typeof(Car))]
+        [HttpGet]
         public IHttpActionResult GetCarByMake(string make)
         {
             List<Car> list = db.Cars.Where(
@@ -76,8 +77,10 @@ namespace GrandCircusCarDealership.Controllers
         }
 
         [ResponseType(typeof(Car))]
-        public IHttpActionResult GetCarByEverything(string make = "boo", string model = "boo", int year = 0, string color = "boo")
+        [HttpGet]
+        public IHttpActionResult GetCarByEverything(string make = "boo", string model = "boo", int? year = 0, string color = "boo")
         {
+            //There is a string.IsNullOrEmpty
             List<Car> cars = (from c in db.Cars
                               select c).ToList();
             if (make != "" && make != "boo" && make != null)
@@ -93,7 +96,7 @@ namespace GrandCircusCarDealership.Controllers
                         where c.Model.Contains(model)
                         select c).ToList();
             }
-            if (year != 0)
+            if (year != 0 && year != null)
             {
                 cars = (from c in cars
                         where c.Year == year
